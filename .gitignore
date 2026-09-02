@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+.opencode/node_modules/
+.opencode/.cache/
+
+# Credentials must remain in the outer project's ignored .secrets directory.
+.env
+.env.*
+
+# 原始项目素材与美术衍生（版权敏感，不入库）
+插画/
+地图/
+原始资料快照/

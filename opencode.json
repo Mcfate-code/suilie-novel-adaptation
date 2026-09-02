@@ -1,0 +1,54 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode-go/hy4-preview",
+  "small_model": "opencode-go/glm-5.3-flash",
+  "default_agent": "story-editor",
+  "subagent_depth": 1,
+  "share": "disabled",
+  "provider": {
+    "tbtk-claude": {
+      "npm": "@ai-sdk/anthropic",
+      "name": "TBTK Claude（仅用于小说正文）",
+      "options": {
+        "baseURL": "https://tbtk.asia/v1",
+        "apiKey": "{env:TBTK_CLAUDE_API_KEY}",
+        "timeout": 600000,
+        "chunkTimeout": 60000
+      },
+      "models": {
+        "oplus5": {
+          "name": "Claude oplus5（正文）"
+        }
+      }
+    }
+  },
+  "permission": {
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "../.secrets/**": "deny"
+    },
+    "edit": {
+      "*": "ask",
+      "草稿/**": "allow",
+      "上下文包/**": "allow"
+    },
+    "bash": {
+      "*": "ask",
+      "rm *": "deny",
+      "git push *": "deny",
+      "python3 tools/validate_story_library.py": "allow",
+      "python3 tools/validate_opencode_setup.py": "allow",
+      "rg *": "allow",
+      "sed *": "allow",
+      "wc *": "allow",
+      "find *": "allow",
+      "ls *": "allow"
+    },
+    "external_directory": "deny",
+    "skill": {
+      "*": "allow"
+    }
+  }
+}
